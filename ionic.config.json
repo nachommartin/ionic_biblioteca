@@ -1,0 +1,7 @@
+{
+  "name": "biblioFinal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
