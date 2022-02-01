@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,45 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Inicio</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+ 
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Bienvenido a iBiblioteca!</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+     iBiblioteca es una aplicación desarrollada con Ionic que permite gestionar una biblioteca de un 
+     centro educativo.
+     Para acceder a la biblioteca pulsa el siguiente botón.
+    </ion-card-content>
+    <ion-item href="biblioteca" class="ion-activated">
+      <ion-icon name="book" slot="start"></ion-icon>
+      <ion-label>Acceso a iBiblioteca</ion-label>
+    </ion-item>
+
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información sobre el autor</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+     Aplicación desarrollada por Nacho M. Martín
+    </ion-card-content>
+    <ion-item href="autor" class="ion-activated">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label>Consultar información</ion-label>
+    </ion-item>
+
+  </ion-card>
+
+
 </ion-content>
