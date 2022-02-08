@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'curriculum',
     loadChildren: () => import('./curriculum/curriculum.module').then( m => m.CurriculumPageModule)
   },
+  {
+    path: 'libro/:isbn',
+    loadChildren: () => import('./libro/libro.module').then( m => m.LibroPageModule)
+  },
 ];
 
 @NgModule({

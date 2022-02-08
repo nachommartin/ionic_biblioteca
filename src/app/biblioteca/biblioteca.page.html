@@ -1,15 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Biblioteca</ion-title>
+    <ion-title> <ion-icon routerLink="/home" name="arrow-back-outline"></ion-icon> Biblioteca</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
    
+  <ion-searchbar  [(ngModel)]="busqueda" placeholder="Buscar" (keyup.enter)="obtenerLibros()" ></ion-searchbar>
 
 
 
-  <ion-item *ngFor="let libro of libros">
+  <ion-item *ngFor="let libro of libros" button (click)="getLibro(libro.isbn[0])">
     <ion-thumbnail >
       <img src="https://covers.openlibrary.org/b/isbn/{{libro.isbn[0]}}.jpg">
     </ion-thumbnail>

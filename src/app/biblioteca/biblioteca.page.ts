@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Libro } from '../interfaces/libro';
 import { BiblioServService } from '../services/biblio-serv.service';
 
@@ -10,23 +11,33 @@ import { BiblioServService } from '../services/biblio-serv.service';
 export class BibliotecaPage implements OnInit {
 
   libros:Array<Libro>
+  busqueda:string; 
+  isbn:string;
 
-  constructor(private servicio:BiblioServService) { }
+
+  constructor(private servicio:BiblioServService, private router: Router) { }
 
   ngOnInit() {
-    this.obtenerLibros()
   }
+  
 
   
   obtenerLibros(){
 
     
-    this.servicio.getBibliotecaLibros().subscribe({
+    this.servicio.getBibliotecaLibros(this.busqueda).subscribe({
       
      next: resp=>{this.libros=resp.docs},
      error:err=>{console.log(err)}
    
    });
  }
+
+ getLibro(pk_isbn:any){
+    
+  this.isbn=pk_isbn;
+  console.log("isbn")
+  this.router.navigate(["/libro", pk_isbn]);
+}
 
 }
