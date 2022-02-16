@@ -16,6 +16,8 @@
       <ion-text><b>ISBN:</b>{{isbn}}</ion-text><br>
 
       <ion-text><b>Editorial:</b>{{editorial}}</ion-text>
+      <i ng-class="{'icon ion-star-outline': !star.false, 
+                    'icon ion-star': star.true}"></i>
 
     </ion-card-content>
   </ion-card>

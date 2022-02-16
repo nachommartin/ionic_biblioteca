@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BiblioServService } from '../services/biblio-serv.service';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-libro',
@@ -15,8 +16,13 @@ export class LibroPage implements OnInit {
   editorial:string;
   foto:string;
   autor:string[];
+  star{
+    name:string="favorito",
+    valor:boolean
+  } ;
 
-  constructor(private servicio: BiblioServService, private ruta: ActivatedRoute) { }
+  constructor(private servicio: BiblioServService, private ruta: ActivatedRoute,
+    private storage: StorageService) { }
 
   ngOnInit() {
 
