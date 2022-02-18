@@ -14,11 +14,11 @@
       <ion-text><b>Autor:</b>{{autor}}</ion-text><br>
       <ion-text><b>Año:</b>{{anyo}}</ion-text><br>
       <ion-text><b>ISBN:</b>{{isbn}}</ion-text><br>
-
       <ion-text><b>Editorial:</b>{{editorial}}</ion-text>
-      <i ng-class="{'icon ion-star-outline': !star.false, 
-                    'icon ion-star': star.true}"></i>
-
+      <br>
+      <button  ion-button icon-left  (click)="favorito()">
+          <ion-icon  name="star"></ion-icon>
+        </button>
     </ion-card-content>
   </ion-card>
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { stringify } from 'querystring';
+import { Star } from '../interfaces/star';
 import { BiblioServService } from '../services/biblio-serv.service';
 import { StorageService } from '../services/storage.service';
 
@@ -16,10 +18,6 @@ export class LibroPage implements OnInit {
   editorial:string;
   foto:string;
   autor:string[];
-  star{
-    name:string="favorito",
-    valor:boolean
-  } ;
 
   constructor(private servicio: BiblioServService, private ruta: ActivatedRoute,
     private storage: StorageService) { }
@@ -53,6 +51,14 @@ export class LibroPage implements OnInit {
 
     })
 
+  }
+
+  favorito(){
+    let titulo: string;
+    titulo= localStorage.getItem(this.titulo)
+    if(localStorage.getItem(titulo)!="true"){
+    this.storage.set(this.titulo, "true" )
+    }
   }
 
 }
