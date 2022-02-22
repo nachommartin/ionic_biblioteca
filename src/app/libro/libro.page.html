@@ -1,26 +1,45 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title> <ion-icon routerLink="/biblioteca" name="arrow-back-outline"></ion-icon> {{titulo}}</ion-title>
+    <ion-title> <ion-icon routerLink="/biblioteca" name="arrow-back-outline"></ion-icon> {{libro.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen> 
   <ion-card>
 
     <img width="200em" height="250em" src="https://covers.openlibrary.org/b/isbn/{{isbn}}.jpg">
   
     <ion-card-content>
-      <ion-text><b>{{titulo}}</b></ion-text> <br>
-      <ion-text><b>Autor:</b>{{autor}}</ion-text><br>
-      <ion-text><b>Año:</b>{{anyo}}</ion-text><br>
-      <ion-text><b>ISBN:</b>{{isbn}}</ion-text><br>
-      <ion-text><b>Editorial:</b>{{editorial}}</ion-text>
+      <ion-text><b>{{libro.title}}</b></ion-text> <br>
+      <ion-text><b>Autor:</b>{{libro.author_name}}</ion-text><br>
+      <ion-text><b>Año:</b>{{libro.first_publish_year}}</ion-text><br>
+      <ion-text><b>ISBN:</b>{{libro.isbn[2]}}</ion-text><br>
+      <ion-text><b>Editorial:</b>{{libro.publisher[0]}}</ion-text>
       <br>
-      <button  ion-button icon-left  (click)="favorito()">
-          <ion-icon  name="star"></ion-icon>
-        </button>
+      <ion-button *ngIf="!fav" color="#4c2f87" (click)="favorito(libro.isbn[2], libro)"><ion-icon name="star-outline"></ion-icon></ion-button>
+      <ion-button *ngIf="fav" color="#4c2f87" (click)="quitarFavorito(libro.isbn[2])"><ion-icon  name="star"></ion-icon></ion-button>
     </ion-card-content>
   </ion-card>
 
+  <ion-button color="#CC00FF" (click)="mostrar()">VER MIS FAVORITOS</ion-button>
+  <span  *ngIf="mostrarFav">
+    <ion-card *ngFor="let fav of librosFav">
+      
+      <img src="http://covers.openlibrary.org/b/isbn/{{fav.isbn[2]}}-M.jpg">
 
+    <ion-card-header>
+      <ion-card-title>{{ fav.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+     
+        <ion-text>
+            <b>Autor:</b> {{fav.author_name}}</ion-text><br>
+        <ion-text><b>Año:</b> {{fav.first_publish_year}}</ion-text><br>
+        <ion-text><b>ISBN:</b> {{fav.isbn[2]}}</ion-text><br>
+        <ion-text><b>Editorial: {{fav.publisher[0]}} </b>
+        </ion-text>
+       
+    </ion-card-content>
+  </ion-card>
+  </span>
 </ion-content>

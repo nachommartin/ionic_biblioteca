@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { Libro } from '../interfaces/libro';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,8 @@ import { Storage } from '@ionic/storage-angular';
 export class StorageService {
 
   private _storage: Storage | null= null;
+  _favoritos: Libro[] = [];
+
 
   constructor(private storage: Storage) { 
     this.init();
@@ -26,5 +29,25 @@ export class StorageService {
   public get(key:string){
     return localStorage.get(key)
 
+  }
+
+  async addFavorito(storageKey: string, value: any){
+    return await this.storage.set(storageKey, value);
+  }
+
+  async borrarFavorito(storageKey: string){
+    return await this.storage.remove(storageKey);
+  }
+
+  async findFavorito(storageKey: string){
+    return await this.storage.get(storageKey);
+  }
+
+  async allFavorites(){
+
+    this.storage.forEach((key, value) => {
+      this._favoritos.push(key);
+    }); 
+      return this._favoritos;
   }
 }

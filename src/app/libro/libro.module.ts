@@ -8,13 +8,21 @@ import { LibroPageRoutingModule } from './libro-routing.module';
 
 import { LibroPage } from './libro.page';
 
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { StorageService } from '../services/storage.service';
+import { BiblioServService } from '../services/biblio-serv.service';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LibroPageRoutingModule
+    LibroPageRoutingModule,
+    IonicStorageModule.forRoot()
+
   ],
+  providers: [StorageService, BiblioServService],
   declarations: [LibroPage]
 })
 export class LibroPageModule {}
